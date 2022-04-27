@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'nanum-amsterdam';
+    src: url(/font-fam/나눔손글씨\ 암스테르담.ttf);
+}
+
+body {
+    background-color: rgba(144, 238, 144, 0.3);
+}
+
+#mainHead {
+}
+
+#mainHead > div {
+    width: 300px;
+    height: 100px;
+    border: 2px solid sienna;
+    background-color: aliceblue;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#mainHead > div > p{
+    font-family: 'nanum-amsterdam';
+    font-size: 35pt;
+    font-weight: bolder;
+    color: rgb(109, 185, 109);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container {
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#mainSec{
+    display: block;
+    border: 2px solid sienna;
+    border-radius: 15px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    background-color: rgb(209, 239, 250);
+}
+
+#mainCal{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    border-spacing: 8px;
+}
+
+#mainCal td{
+    font-family: "nanum-amsterdam";
+    font-weight: bolder;
+    font-size: 15pt;
+    text-align: center;
+    border: 1px solid rgb(62, 65, 65);
+    border-radius: 10px;
+    box-shadow: 2px 2px gray;
+    width: 140px;
+    height: 115px;
+    vertical-align: top;
+    background-color: rgb(255, 227, 232);
+}
+
+#mainCal td:hover{
+    background-color: rgb(255, 137, 159) !important;
+}
+
+#mainCal caption{
+    font-family: "nanum-amsterdam";
+    font-weight: bolder;
+    font-size: 30pt;
+    margin-bottom: 15px;
+}
+
+#editSec{
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    right: 0;
+    border: 0px solid black;
+    border-radius: 15px;
+    background-color: aqua;
+    overflow: hidden;
+    height: 100%;
+    width: 0;
+    transition: .5s ease;
+}
+
+#boardSec{
+    position: relative;
+    border: 2px solid saddlebrown;
+    border-radius: 15px;
+    background-color: rgb(253, 220, 159);
+    overflow: auto;
+    top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 35px;
+}
+
+#todayTodo{
+    float: left;
+    border: 3px dotted rgb(255, 87, 53);
+    border-radius: 10px;
+    width: 325px;
+    font-family: 'nanum-amsterdam';
+    font-size: 20pt;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#todayTodo h3{
+    font-size: 30pt;
+    margin-bottom: 10px;
+}
+
+#timetable{
+    float: left;
+    border: 3px dotted rgb(255, 87, 53);
+    border-radius: 8px;
+    margin-left: 40px;
+}
+

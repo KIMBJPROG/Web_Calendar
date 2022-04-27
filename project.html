@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/external_style.css">
+    <script type="text/javascript" src="/external_script.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 일정표</title>
+</head>
+<body>
+    <header id="mainHead">
+        <div>
+            <p>월간 일정표</p>
+        </div>
+    </header>
+    <br>
+    <div class="container">
+        <section id="mainSec">
+            <table id="mainCal">
+                <script>
+                    makeMainCal(month, totalDays, "mainCal");
+                </script>
+            </table>
+        </section>
+        <section id="editSec">
+            <div>
+                <ul id="editTodoLi"></ul>
+            </div>
+            <textarea id="todoInput" name="todo" rows="2" cols="10" placeholder="무엇을 할까요?"></textarea>
+            <button type="button" id="todoBtn" onclick="addTodo()">추가!</button>
+        </section>
+    </div>
+    <section id="boardSec">
+        <button type="button" name="토글버튼" onclick="onEditSec();">on</button>
+        <button type="button" name="토글버튼" onclick="offEditSec();">off</button>
+        <div id="todayTodo">
+            <h3 style="text-align: center;">오늘의 할일</h3>
+            <hr>
+            <ul id="mainTodoLi"></ul>
+        </div>
+        <div id="timetable">
+            <h3 style="text-align: center;"></h3>
+            <table>
+                <caption>시간표</caption>
+                <script>
+                    for(let i=0; i<=24; i++) {
+                        document.write("<tr>");
+                        document.write("<td>" + i + "</td>");
+                        document.write("</tr>");
+                    }
+                </script>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
