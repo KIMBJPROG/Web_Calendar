@@ -4,6 +4,7 @@ let month = today.getMonth()+1;
 let day = today.getDate();
 let totalDays = new Date(year,month,0).getDate();
 let todoList = new Array(12);
+let editSecToggle = 0;
 
 for (let i=0; i<12; i++) {
     todoList[i] = new Array(31);
@@ -41,7 +42,8 @@ function makeMainCal(m, tday, id) {
         tbody.appendChild(tr);
     }
     if (m == month) {
-        tbody.rows[parseInt(day/7)].cells[day%7-1].style.backgroundColor="lightpink";
+        console.log(tbody.rows[parseInt(day/7)].cells[day%7-1]);
+        tbody.rows[parseInt((day-1)/7)].cells[(day-1)%7].style.backgroundColor = "lightpink";
     }
     parent.appendChild(tbody);
 }
@@ -58,20 +60,21 @@ function makeTodoList(m, d, id) {
 
 function addTodo() {
     let text = document.getElementById("todoInput").value;
+    if (text == '')
+        return;
+    document.getElementById("todoInput").value = '';
     todoList[month-1][day-1].push(text);
     makeTodoList(month, day, "mainTodoLi");
 }
 
-function onEditSec() {
-    let editsec = document.getElementById("editSec");
-    editsec.style.width = "100%";
-    editsec.style.left = "0";
-    editsec.style.border = "2px solid black";
-}
-
-function offEditSec() {
-    let editsec = document.getElementById("editSec");
-    editsec.style.width = "0";
-    editsec.style.left = "100%";
-    editsec.style.border = "0px";
+function editSecSwitch() {
+    if (!editSecToggle) {
+        document.getElementById("editSec").style.transform = "scale(1.0)";
+        document.getElementById("mainSecShield").style.display = "block";
+        editSecToggle = 1;
+    } else {
+        document.getElementById("editSec").style.transform = "scale(0.0)";
+        document.getElementById("mainSecShield").style.display = "none";
+        editSecToggle = 0;
+    }
 }

@@ -23,17 +23,19 @@
                 </script>
             </table>
         </section>
+        <div id="mainSecShield" class="shield"></div>
         <section id="editSec">
-            <div>
+            <div id="editTodo">
                 <ul id="editTodoLi"></ul>
             </div>
-            <textarea id="todoInput" name="todo" rows="2" cols="10" placeholder="무엇을 할까요?"></textarea>
-            <button type="button" id="todoBtn" onclick="addTodo()">추가!</button>
+            <div id="editTodoTArea">
+                <input type="text" id="todoInput" name="todo" rows="1" placeholder="무엇을 할까요?"></textarea>
+                <button type="button" onclick="addTodo()"><img src="icons/plus.png" style="width: 35px; height: 35px;"></button>
+            </div>
         </section>
     </div>
     <section id="boardSec">
-        <button type="button" name="토글버튼" onclick="onEditSec();">on</button>
-        <button type="button" name="토글버튼" onclick="offEditSec();">off</button>
+        <button type="button" name="토글버튼" onclick="editSecSwitch();">on</button>
         <div id="todayTodo">
             <h3 style="text-align: center;">오늘의 할일</h3>
             <hr>
