@@ -102,7 +102,7 @@ function deleteTodo(m, d, rNode) {
     makeEditTodo(m, d);
 }
 
-function editSecSwitch() {
+function editSecSwitch(m, d) {
     if (!editSecToggle) {
         document.getElementById("editSec").style.transform = "scale(1.0)";
         document.getElementById("mainSecShield").style.display = "block";

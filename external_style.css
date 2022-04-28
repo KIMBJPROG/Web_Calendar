@@ -101,7 +101,7 @@ body {
     transition: 0.5s linear;
     transform-origin: center center;
     transform-style: preserve-3d;
-    transform: scale(1.0);
+    transform: scale(0.0);
 }
 
 #editSec .exit{
@@ -117,29 +117,29 @@ body {
 #editSec p{
     width: fit-content;
     margin-left: 100px;
-    margin-top: 0;
+    margin-top: 5px;
     margin-bottom: 0;
     text-align: center;
     font-size: 20pt;
-    background-color: blueviolet;
 }
 
 #editTodo{
     width: 500px;
     height: 370px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: blue;
+    margin-left: 100px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: aliceblue;
+    overflow-y: scroll;
 }
 
 
 #editTodo > table{
-    background-color: brown;
     width: 490px;
     table-layout: fixed;
     margin-left: auto;
     margin-right: auto;
-    border-spacing: 20px 0;
+    margin-top: 4px;
 }
 
 #editTodo > table .col1{
@@ -156,24 +156,18 @@ body {
 
 #editTodo > table .col2{
     width: 15px;
-    border: 1px solid black;
     text-align: center;
-}
-
-#editTobo > table .col2 > button{
-    background-color: burlywood;
 }
 
 #editTodoTArea{
     width: fit-content;
     height: fit-content;
-    margin: auto;
+    margin-left: 100px;
     margin-top: 10px;
-    background-color: aqua;
 }
 
 #editTodoTArea input{
-    width: 400px;
+    width: 435px;
     height: 50px;
     margin-bottom: 15px;
     box-sizing: border-box;
@@ -188,7 +182,7 @@ body {
 #editTodoTArea button{
     width: 60px;
     height: 60px;
-    margin-left: 10px;
+    margin-left: 5px;
     background-color: beige;
     border-radius: 30px;
     box-shadow: 1px 1px gray;
