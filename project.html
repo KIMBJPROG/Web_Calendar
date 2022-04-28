@@ -19,19 +19,28 @@
         <section id="mainSec">
             <table id="mainCal">
                 <script>
-                    makeMainCal(month, totalDays, "mainCal");
+                    makeMainCal(month, totalDays, "#mainCal");
                 </script>
             </table>
         </section>
         <div id="mainSecShield" class="shield"></div>
         <section id="editSec">
             <button type="button" class="exit" onclick="editSecSwitch();"><img src="icons/x.png" style="width: 25px; height: 25px;"></button>
-            <p>2022/04/28</p>
+            <p></p>
+            <script>
+                setEditSection();
+            </script>
             <div id="editTodo">
-                <ul>
-                    <li>This is</li>
-                    <li>Content</li>
-                </ul>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="col1">집에서 밥먹고 운동가기</td>
+                            <td class="col2">
+                                <button type="button"><img src="icons/x.png" style="width: 15px; height: 15px;"></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div id="editTodoTArea">
                 <input type="text" id="todoInput" name="todo" rows="1" placeholder="무엇을 할까요?"></textarea>

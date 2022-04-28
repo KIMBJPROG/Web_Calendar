@@ -132,8 +132,36 @@ body {
     background-color: blue;
 }
 
-#editTodo ul{
-    
+
+#editTodo > table{
+    background-color: brown;
+    width: 490px;
+    table-layout: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 20px 0;
+}
+
+#editTodo > table .col1{
+    font-size: 15pt;
+    width: 150px;
+    border-bottom: 1px solid black;
+    white-space: nowrap;
+    overflow: scroll;
+}
+
+#editTodo > table .col1::-webkit-scrollbar{
+    display: none;
+}
+
+#editTodo > table .col2{
+    width: 15px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+#editTobo > table .col2 > button{
+    background-color: burlywood;
 }
 
 #editTodoTArea{
@@ -184,7 +212,7 @@ body {
     border-radius: 10px;
     width: 325px;
     font-family: 'nanum-amsterdam';
-    font-size: 20pt;
+    font-size: 25pt;
     margin-left: 50px;
     margin-bottom: 20px;
     padding-left: 20px;
@@ -194,6 +222,11 @@ body {
 #todayTodo h3{
     font-size: 30pt;
     margin-bottom: 10px;
+}
+
+#mainTodoLi{
+    max-height: 300px;
+    overflow: scroll;
 }
 
 #timetable{

@@ -13,8 +13,8 @@ for (let i=0; i<12; i++) {
     }
 }
 
-function clearChild(id) {
-    let parentEl = document.getElementById(id);
+function clearChild(selector) {
+    let parentEl = document.querySelector(selector);
     while (parentEl.firstChild) {
         parentEl.removeChild(parentEl.firstChild);
     }
@@ -42,14 +42,41 @@ function makeMainCal(m, tday, id) {
         tbody.appendChild(tr);
     }
     if (m == month) {
-        console.log(tbody.rows[parseInt(day/7)].cells[day%7-1]);
         tbody.rows[parseInt((day-1)/7)].cells[(day-1)%7].style.backgroundColor = "lightpink";
     }
     parent.appendChild(tbody);
 }
 
-function makeTodoList(m, d, id) {
-    let parent = clearChild(id);
+function makeEditTodo(m, d) {
+    let parent = clearChild("#editTodo tbody");
+    const img = document.createElement("img");
+    img.src = "icons/x.png";
+    img.style = "width: 15px; height: 15px;";
+
+    for(let i=0; i<todoList[m-1][d-1].length; i++) {
+        const tr = document.createElement("tr");
+        const col1 = document.createElement("td");
+        const col2 = document.createElement("td");
+        const btn = document.createElement("button");
+
+        col1.className = "col1";
+        col1.appendChild(document.createTextNode(todoList[m-1][d-1][i]));
+        col2.className = "col2";
+        btn.type = "button";
+        btn.addEventListener('click', function(){
+            deleteTodo(m, d, tr);
+        });
+        btn.appendChild(img.cloneNode(true));   
+        col2.appendChild(btn);
+
+        tr.appendChild(col1);
+        tr.appendChild(col2);
+        parent.appendChild(tr);
+    }
+}
+
+function makeTodoList(m, d) {
+    let parent = clearChild("#mainTodoLi");
     for(let i=0; i<todoList[m-1][d-1].length; i++) {
         const li = document.createElement("li");
         const textNode = document.createTextNode(todoList[m-1][d-1][i]);
@@ -64,7 +91,15 @@ function addTodo() {
         return;
     document.getElementById("todoInput").value = '';
     todoList[month-1][day-1].push(text);
-    makeTodoList(month, day, "mainTodoLi");
+    makeTodoList(month, day);
+    makeEditTodo(month, day);
+}
+
+function deleteTodo(m, d, rNode) {
+    let idx = rNode.rowIndex;
+    todoList[m-1][d-1].splice(idx, 1);
+    makeTodoList(m, d);
+    makeEditTodo(m, d);
 }
 
 function editSecSwitch() {
@@ -77,4 +112,9 @@ function editSecSwitch() {
         document.getElementById("mainSecShield").style.display = "none";
         editSecToggle = 0;
     }
+}
+
+function setEditSection() {
+    let dateText = document.querySelector("#editSec p");
+    dateText.innerHTML = year+'/'+month+'/'+day;
 }
