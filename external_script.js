@@ -27,7 +27,7 @@ function makeMainCal(m, tday, id) {
     const capText = document.createTextNode(m+"월");
     const tbody = document.createElement("tbody");
     caption.appendChild(capText);
-    parent.appendChild(caption);
+    // parent.appendChild(caption);
 
     for (let i=0; i<=tday/7; i++) {
         const tr = document.createElement("tr");

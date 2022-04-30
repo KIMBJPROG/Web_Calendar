@@ -17,6 +17,12 @@
     <br>
     <div class="container">
         <section id="mainSec">
+            <div>
+                <input type="image" src="icons/left-arrow.png">
+                <span>4월</span>
+                <input type="image" src="icons/right-arrow.png">
+                <button type="button" name="토글버튼" onclick="editSecSwitch();">수정</button>
+            </div>
             <table id="mainCal">
                 <script>
                     makeMainCal(month, totalDays, "#mainCal");
@@ -40,7 +46,6 @@
         </section>
     </div>
     <section id="boardSec">
-        <button type="button" name="토글버튼" onclick="editSecSwitch();">on</button>
         <div id="todayTodo">
             <h3 style="text-align: center;">오늘의 할일</h3>
             <hr>

@@ -44,12 +44,14 @@ body {
     display: none;
     grid-row-start: 1;
     grid-column-start: 1;
+    z-index: 1;
     border-radius: 15px;
 }
 
 #mainSec{
     grid-row-start: 1;
     grid-column-start: 1;
+    z-index: 0;
     border: 2px solid sienna;
     border-radius: 15px;
     padding-top: 30px;
@@ -57,7 +59,31 @@ body {
     background-color: rgb(209, 239, 250);
 }
 
+#mainSec > div{
+    height: 55px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#mainSec > div > span{
+    font-family: "nanum-amsterdam";
+    font-weight: bolder;
+    font-size: 35pt;
+}
+
+#mainSec > div > input{
+    width: 40px;
+    height: 40px;
+}
+
+#mainSec > div .left{
+}
+
+#mainSec > div .right{
+}
+
 #mainCal{
+    background-color:cadetblue;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
@@ -82,16 +108,10 @@ body {
     background-color: rgb(255, 137, 159) !important;
 }
 
-#mainCal caption{
-    font-family: "nanum-amsterdam";
-    font-weight: bolder;
-    font-size: 30pt;
-    margin-bottom: 15px;
-}
-
 #editSec{
     grid-row-start: 1;
     grid-column-start: 1;
+    z-index: 3;
     width: 700px;
     height: 500px;
     margin: auto;
