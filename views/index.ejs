@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/header'); -%>
+
+<body>
+    <header id="mainHead">
+        <div>
+            <p>월간 일정표</p>
+        </div>
+    </header>
+    <br>
+    <div class="container">
+        <section id="mainSec">
+            <div>
+                <input type="image" src="icons/left-arrow.png" onclick="shiftMonth(-1);return false;">
+                <span id="mainMonth"><script>showMonth();</script></span>
+                <input type="image" src="icons/right-arrow.png" onclick="shiftMonth(1);return false;">
+            </div>
+            <table id="mainCal">
+                <script>
+                    makeMainCal();
+                </script>
+            </table>
+        </section>
+        <div id="mainSecShield" class="shield"></div>
+        <section id="editSec">
+            <button type="button" class="exit" onclick="editSecSwitch();"><img src="icons/x.png" style="width: 25px; height: 25px;"></button>
+            <p></p>
+            <script>
+                setEditSection();
+            </script>
+            <div id="editTodo">
+                <table><tbody></tbody></table>
+            </div>
+            <div id="editTodoTArea">
+                <input type="text" id="todoInput" name="todo" rows="1" placeholder="무엇을 할까요?"></textarea>
+                <button type="button" onclick="addTodo()"><img src="icons/plus.png" style="width: 30px; height: 30px;"></button>
+            </div>
+        </section>
+    </div>
+    <section id="boardSec">
+        <div id="todayTodo">
+            <h3 style="text-align: center;">오늘의 할일</h3>
+            <hr>
+            <ul id="mainTodoLi"></ul>
+        </div>
+        <!-- <div id="timetable">
+            <h3 style="text-align: center;"></h3>
+            <table>
+                <caption>시간표</caption>
+                <script>
+                    for(let i=0; i<=24; i++) {
+                        document.write("<tr>");
+                        document.write("<td>" + i + "</td>");
+                        document.write("</tr>");
+                    }
+                </script>
+            </table>
+        </div> -->
+    </section>
+</body>
+</html>
