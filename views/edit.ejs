@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/header'); -%>
+
+<body>
+    <section id="editSec">
+        <a href="/"><img src="icons/x.png" style="width: 25px; height: 25px;"></a>
+        <p><%= chosenDate%></p>
+        <div id="editTodo">
+            <table><tbody></tbody></table>
+        </div>
+        <form action="/todo/store" method="POST">
+            <div id="editTodoTArea">
+                <input type="text" class="form-control" id="todoInput" name="activity" rows="1" placeholder="무엇을 할까요?">
+                <button type="submit"><img src="icons/plus.png" style="width: 30px; height: 30px;"></button>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

@@ -26,24 +26,37 @@ function clearChild(selector) {
 
 function makeMainCal() {
     let parent = clearChild("#mainCal");
-    let tday = new Date(year,month,0).getDate();
+    let totalDay = new Date(year,month,0).getDate();
     const caption = document.createElement("caption");
     const capText = document.createTextNode(month+"월");
     const tbody = document.createElement("tbody");
     caption.appendChild(capText);
     // parent.appendChild(caption);
 
-    for (let i=0; i<=tday/7; i++) {
+    for (let i=0; i<=totalDay/7; i++) {
         const tr = document.createElement("tr");
         for (let j=1; j<=7; j++) {
-            if(i*7+j > tday)
+            let temp = i*7+j;
+            if(temp > totalDay)
                 break;
             const td = document.createElement("td");
-            const textNode = document.createTextNode((i*7+j)+"일");
+            const textNode = document.createTextNode(temp+"일");
             td.appendChild(textNode);
             td.addEventListener('click', function() {
-                editSecSwitch(i*7+j);
+                let form = document.createElement('form');
+                form.setAttribute('method','post');
+                form.setAttribute('action','/openedit');
+                document.characterSet = 'utf-8';
+                let hiddenField = document.createElement('input');
+                hiddenField.setAttribute('type','hidden');
+                hiddenField.setAttribute('name','date');
+                hiddenField.setAttribute('value',year.toString()+'/'+month.toString()+'/'+temp.toString());
+                form.appendChild(hiddenField);
+                document.body.appendChild(form);
+                form.submit();
+                document.getElementById("editDate").setAttribute('value',month.toString() + "/" + temp.toString());
             })
+
             tr.appendChild(td);
         }
         tbody.appendChild(tr);
@@ -109,18 +122,18 @@ function deleteTodo(m, d, rNode) {
     makeEditTodo(m, d);
 }
 
-function editSecSwitch(d) {
-    if (!editSecToggle) {
-        document.getElementById("editSec").style.transform = "scale(1.0)";
-        document.getElementById("mainSecShield").style.display = "block";
-        editSecToggle = 1;
-        setEditSection(d);
-    } else {
-        document.getElementById("editSec").style.transform = "scale(0.0)";
-        document.getElementById("mainSecShield").style.display = "none";
-        editSecToggle = 0;
-    }
-}
+// function editSecSwitch(d) {
+//     if (!editSecToggle) {
+//         document.getElementById("editSec").style.transform = "scale(1.0)";
+//         document.getElementById("mainSecShield").style.display = "block";
+//         editSecToggle = 1;
+//         setEditSection(d);
+//     } else {
+//         document.getElementById("editSec").style.transform = "scale(0.0)";
+//         document.getElementById("mainSecShield").style.display = "none";
+//         editSecToggle = 0;
+//     }
+// }
 
 function setEditSection(d) {
     let dateText = document.querySelector("#editSec p");

@@ -36,18 +36,6 @@ body {
     margin-right: 20px;
 }
 
-.shield{
-    background-color: rgba(255, 255, 255, 0.579);
-}
-
-#mainSecShield{
-    display: none;
-    grid-row-start: 1;
-    grid-column-start: 1;
-    z-index: 1;
-    border-radius: 15px;
-}
-
 #mainSec{
     grid-row-start: 1;
     grid-column-start: 1;
@@ -121,10 +109,10 @@ body {
     transition: 0.5s linear;
     transform-origin: center center;
     transform-style: preserve-3d;
-    transform: scale(0.0);
+    transform: scale(1.0);
 }
 
-#editSec .exit{
+#editSec > a{
     float: right;
     width: fit-content;
     height: fit-content;
