@@ -8,7 +8,23 @@
         <a href="/"><img src="icons/x.png" style="width: 25px; height: 25px;"></a>
         <p><%= chosenDate%></p>
         <div id="editTodo">
-            <table><tbody></tbody></table>
+            <table>
+                <tbody>
+                    <% if(todo) { %>
+                    <% for (var i = 0; i < todo.todoList.length; i++) { %>
+                    <!-- todo lists for edit-->
+                    <tr>
+                        <td class="col1">
+                            <%= todo.todoList[i].activity; %>
+                        </td>
+                        <td class="col2">
+                            <button onclick="deleteTodo('<%= todo.todoList[i].id %>')"><img src="icons/x.png" style="width: 15px; height: 15px;"></button>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <% } %>
+                </tbody>
+            </table>
         </div>
         <form action="/todo/store" method="POST">
             <div id="editTodoTArea">

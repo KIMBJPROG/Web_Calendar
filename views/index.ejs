@@ -29,20 +29,12 @@
             <h3 style="text-align: center;">오늘의 할일</h3>
             <hr>
             <ul id="mainTodoLi"></ul>
+            <% if(todayList) { %>
+            <% for(var i = 0; i < todayList.todoList.length; i++) { %>
+            <li><%= todayList.todoList[i].activity %></li>
+            <% } %>
+            <% } %>
         </div>
-        <!-- <div id="timetable">
-            <h3 style="text-align: center;"></h3>
-            <table>
-                <caption>시간표</caption>
-                <script>
-                    for(let i=0; i<=24; i++) {
-                        document.write("<tr>");
-                        document.write("<td>" + i + "</td>");
-                        document.write("</tr>");
-                    }
-                </script>
-            </table>
-        </div> -->
     </section>
 </body>
 </html>

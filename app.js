@@ -5,9 +5,13 @@ const ejs = require('ejs')
 const mongoose = require('mongoose')
 const storeTodoController = require('./controllers/storeTodo')
 const openEditController = require('./controllers/openEdit')
+const editController = require('./controllers/setEdit')
+const homeController = require('./controllers/home')
+const todoDeleteController = require('./controllers/todoDelete')
 const expressSession = require('express-session')
+const validationMiddleware = require('./middleware/validationMiddleware')
 
-mongoose.connect('mongodb://localhost/my_calender', {useNewUrlParser:true});
+mongoose.connect('mongodb://localhost/my_calendar', {useNewUrlParser:true});
 
 global.chosenDate = null;
 
@@ -21,21 +25,17 @@ app.use(expressSession({
     resave: true,
     saveUninitialized: true
 }))
-app.use('/edit', (req, res, next)=>{
+app.use('*', (req, res, next)=>{
     chosenDate = req.session.chosenDate;
     next();
 })
 
-app.get('/edit',(req,res)=>{
-    res.render('edit');
-})
-
-app.get('/', (req, res)=>{
-    res.render('index');
-});
+app.get('/edit', editController)
+app.get('/', homeController);
 
 app.post('/openedit', openEditController)
-app.post('/todo/store', storeTodoController)
+app.post('/todo/store', validationMiddleware, storeTodoController)
+app.post('/edit/delete', todoDeleteController)
 
 app.listen(8000, ()=>{
     console.log('Server running at http://127.0.0.1:8000');     

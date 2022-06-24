@@ -1,15 +1,13 @@
 const TodoList = require('../models/TodoList.js')
 
 module.exports = (req, res) => {
-    const { activity } = req.body;
+    const { id } = req.body;
+    console.log(id)
     TodoList.findOne({ 'date':chosenDate }, async (error, todoList) => {
         if(todoList) {
-            await todoList.addTodo(activity);
+            await todoList.removeTodo(id);
         } else {
-            await TodoList.create({
-                todoList: [{activity: activity}],
-                date: chosenDate
-            })
+            console.log("Severe Error Data Damaged!");
         }
         res.redirect('/edit');
     })

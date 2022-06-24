@@ -67,33 +67,47 @@ function makeMainCal() {
     parent.appendChild(tbody);
 }
 
-function makeEditTodo(m, d) {
-    let parent = clearChild("#editTodo tbody");
-    const img = document.createElement("img");
-    img.src = "icons/x.png";
-    img.style = "width: 15px; height: 15px;";
-
-    for(let i=0; i<todoList[m-1][d-1].length; i++) {
-        const tr = document.createElement("tr");
-        const col1 = document.createElement("td");
-        const col2 = document.createElement("td");
-        const btn = document.createElement("button");
-
-        col1.className = "col1";
-        col1.appendChild(document.createTextNode(todoList[m-1][d-1][i]));
-        col2.className = "col2";
-        btn.type = "button";
-        btn.addEventListener('click', function(){
-            deleteTodo(m, d, tr);
-        });
-        btn.appendChild(img.cloneNode(true));   
-        col2.appendChild(btn);
-
-        tr.appendChild(col1);
-        tr.appendChild(col2);
-        parent.appendChild(tr);
-    }
+function deleteTodo(id) {
+    let form = document.createElement('form');
+    form.setAttribute('method','post');
+    form.setAttribute('action','/edit/delete');
+    document.characterSet = 'utf-8';
+    let hiddenField = document.createElement('input');
+    hiddenField.setAttribute('type','hidden');
+    hiddenField.setAttribute('name','id');
+    hiddenField.setAttribute('value',id);
+    form.appendChild(hiddenField);
+    document.body.appendChild(form);
+    form.submit();
 }
+
+// function makeEditTodo(m, d) {
+//     let parent = clearChild("#editTodo tbody");
+//     const img = document.createElement("img");
+//     img.src = "icons/x.png";
+//     img.style = "width: 15px; height: 15px;";
+
+//     for(let i=0; i<todoList[m-1][d-1].length; i++) {
+//         const tr = document.createElement("tr");
+//         const col1 = document.createElement("td");
+//         const col2 = document.createElement("td");
+//         const btn = document.createElement("button");
+
+//         col1.className = "col1";
+//         col1.appendChild(document.createTextNode(todoList[m-1][d-1][i]));
+//         col2.className = "col2";
+//         btn.type = "button";
+//         btn.addEventListener('click', function(){
+//             deleteTodo(m, d, tr);
+//         });
+//         btn.appendChild(img.cloneNode(true));   
+//         col2.appendChild(btn);
+
+//         tr.appendChild(col1);
+//         tr.appendChild(col2);
+//         parent.appendChild(tr);
+//     }
+// }
 
 function makeTodoList(m, d) {
     let parent = clearChild("#mainTodoLi");
@@ -115,12 +129,12 @@ function addTodo() {
     makeEditTodo(month, day);
 }
 
-function deleteTodo(m, d, rNode) {
-    let idx = rNode.rowIndex;
-    todoList[m-1][d-1].splice(idx, 1);
-    makeTodoList(m, d);
-    makeEditTodo(m, d);
-}
+// function deleteTodo(m, d, rNode) {
+//     let idx = rNode.rowIndex;
+//     todoList[m-1][d-1].splice(idx, 1);
+//     makeTodoList(m, d);
+//     makeEditTodo(m, d);
+// }
 
 // function editSecSwitch(d) {
 //     if (!editSecToggle) {
@@ -135,10 +149,10 @@ function deleteTodo(m, d, rNode) {
 //     }
 // }
 
-function setEditSection(d) {
-    let dateText = document.querySelector("#editSec p");
-    dateText.innerHTML = year+'/'+month+'/'+d;
-}
+// function setEditSection(d) {
+//     let dateText = document.querySelector("#editSec p");
+//     dateText.innerHTML = year+'/'+month+'/'+d;
+// }
 
 function shiftMonth(dir) {
     dir < 0 ? --month : ++month;
